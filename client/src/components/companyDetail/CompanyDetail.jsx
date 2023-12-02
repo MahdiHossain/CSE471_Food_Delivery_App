@@ -8,7 +8,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { request } from '../../util/fetchAPI'
-import { FaBed, FaSquareFull } from 'react-icons/fa'
+import { FaHamburger, FaClock } from 'react-icons/fa'
 import { BsBookmark, BsFillBookmarkFill } from 'react-icons/bs'
 import { useRef } from 'react'
 import Comment from '../comment/Comment'
@@ -22,7 +22,6 @@ const CompanyDetail = () => {
   const [success, setSuccess] = useState(false)
   const [commentText, setCommentText] = useState('')
   const [comments, setComments] = useState([])
-  // todo display message
   const [shortComment, setShortComment] = useState(false)
   const { id } = useParams()
   const formRef = useRef()
@@ -155,8 +154,8 @@ const CompanyDetail = () => {
                 }</span>
             </div>
             <div className={classes.moreDetails}>
-              <span>{companyDetail?.beds} <FaBed className={classes.icon} /></span>
-              <span>{companyDetail?.sqmeters} square meters <FaSquareFull className={classes.icon} /></span>
+              <span>{companyDetail?.beds} <FaHamburger className={classes.icon} /></span>
+              <span>{companyDetail?.sqmeters} Schedule <FaClock className={classes.icon} /></span>
             </div>
           </div>
           <p className={classes.desc}>

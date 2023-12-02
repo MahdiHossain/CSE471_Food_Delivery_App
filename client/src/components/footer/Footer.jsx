@@ -8,7 +8,7 @@ const Footer = () => {
         <div className={classes.col}>
           <h2>About the App</h2>
           <p>
-            my first MERN Apartment buying CSE470 Website
+            Our Food Delivery App for CSE471 Project
           </p>
         </div>
         <div className={classes.col}>

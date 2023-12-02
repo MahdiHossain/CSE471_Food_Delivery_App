@@ -39,7 +39,7 @@ const PopularCompanies= () => {
         <div className={classes.restaurants}>
           <Link to={`/company/find?type=burger`} className={classes.restaurant}>
             <img src={img1} />
-            <div className={classes.quantity}>{numCompanies?.Burger} restaurants</div>
+            <div className={classes.quantity}>{numCompanies?.Pizza} restaurants</div>
             <h5>Burger restaurants</h5>
           </Link>
           <Link to={`/company/find?type=pizza`} className={classes.restaurant}>

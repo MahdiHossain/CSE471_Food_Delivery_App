@@ -22,12 +22,13 @@ const dbConnection = async () => {
     }
   };
   dbConnection();
-app.use('/image', express.static('public/images'))
+
 
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use('/images', express.static('public/images'))
 app.use("/auth", authController)
 app.use("/company", companyController)
 app.use("/upload", uploadController)

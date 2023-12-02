@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { FaBed, FaSquareFull } from 'react-icons/fa'
+import { FaHamburger, FaClock } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { request } from '../../util/fetchAPI'
@@ -26,7 +26,7 @@ const MyProfile = () => {
                 const options = {
                     Authorization: `Bearer ${token}`
                 }
-                const data = await request(`/property/find/my-properties`, 'GET', options)
+                const data = await request(`/company/find/my-properties`, 'GET', options)
                 setListedProperties(data)
             } catch (error) {
                 console.log(error)
@@ -41,7 +41,7 @@ const MyProfile = () => {
                 const options = {
                     Authorization: `Bearer ${token}`
                 }
-                const data = await request(`/property/find/bookmarked-properties`, 'GET', options)
+                const data = await request(`/company/find/bookmarked-properties`, 'GET', options)
                 setBookmarkedProperties(data)
             } catch (error) {
                 console.log(error)
@@ -103,7 +103,7 @@ const MyProfile = () => {
                             <div className={classes.properties}>
                                 {listedProperties?.length > 0 ? listedProperties?.map((listedProperty) => (
                                     <div key={listedProperty._id} className={classes.property}>
-                                        <Link to={`/propertyDetail/${listedProperty._id}`} className={classes.imgContainer}>
+                                        <Link to={`/companyDetail/${listedProperty._id}`} className={classes.imgContainer}>
                                             <img src={`http://localhost:5000/images/${listedProperty?.img}`} alt="" />
                                         </Link>
                                         <div className={classes.details}>
@@ -112,8 +112,8 @@ const MyProfile = () => {
                                                 <img src={user?.profileImg ? `http://localhost:5000/images/${user?.profileImg}` : person} className={classes.owner} />
                                             </div>
                                             <div className={classes.moreDetails}>
-                                                <span>{listedProperty?.beds} <FaBed className={classes.icon} /></span>
-                                                <span>{listedProperty?.sqmeters} sq. meters<FaSquareFull className={classes.icon} /></span>
+                                                <span>{listedProperty?.rating} <FaClock className={classes.icon} /></span>
+                                                <span>{listedProperty?.review} sq. meters<FaHamburger className={classes.icon} /></span>
                                             </div>
                                             <div className={classes.desc}>
                                                 {listedProperty?.decs}
@@ -130,7 +130,7 @@ const MyProfile = () => {
                             <div className={classes.properties}>
                                 {bookmarkedProperties?.length > 0 ? bookmarkedProperties?.map((bookmarkedProperty) => (
                                     <div key={bookmarkedProperty._id} className={classes.property}>
-                                        <Link to={`/propertyDetail/${bookmarkedProperty._id}`} className={classes.imgContainer}>
+                                        <Link to={`/companyDetail/${bookmarkedProperty._id}`} className={classes.imgContainer}>
                                             <img src={`http://localhost:5000/images/${bookmarkedProperty?.img}`} alt="" />
                                         </Link>
                                         <div className={classes.details}>
@@ -139,8 +139,8 @@ const MyProfile = () => {
                                                 <img src={person} className={classes.owner} />
                                             </div>
                                             <div className={classes.moreDetails}>
-                                                <span>{bookmarkedProperty?.beds} <FaBed className={classes.icon} /></span>
-                                                <span>{bookmarkedProperty?.sqmeters} sq. meters<FaSquareFull className={classes.icon} /></span>
+                                                <span>{bookmarkedProperty?.beds} <FaClock className={classes.icon} /></span>
+                                                <span>{bookmarkedProperty?.sqmeters} sq. meters<FaHamburger className={classes.icon} /></span>
                                             </div>
                                             <div className={classes.desc}>
                                                 {bookmarkedProperty?.decs}

@@ -126,7 +126,7 @@ companyController.get('/find/:id', async (req, res) => {
 })
 
 
-// create estate
+// create company
 companyController.post('/', verifyToken, async (req, res) => {
     try {
         const newCompany = await Company.create({ ...req.body, currentOwner: req.user.id })
@@ -137,7 +137,7 @@ companyController.post('/', verifyToken, async (req, res) => {
     }
 })
 
-// update estate
+// update company
 companyController.put('/:id', verifyToken, async (req, res) => {
     try {
         const company = await Company.findById(req.params.id)
@@ -184,7 +184,7 @@ companyController.put('/bookmark/:id', verifyToken, async (req, res) => {
     }
 })
 
-// delete estate
+// delete company
 companyController.delete('/:id', verifyToken, async (req, res) => {
     try {
         const company = await Company.findById(req.params.id);

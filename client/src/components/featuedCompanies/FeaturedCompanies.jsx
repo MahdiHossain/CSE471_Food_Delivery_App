@@ -2,11 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { request } from '../../util/fetchAPI'
-import img from '../../assets/womaneating.jpg'
-import person from '../../assets/burger1.jpg'
+import img from '../../assets/forkspoon.jpeg'
+import person from '../../assets/person2.jpeg'
 import { Link } from 'react-router-dom'
 import classes from "./featuredCompanies.module.css"
-import { FaBed, FaSquareFull } from 'react-icons/fa'
+import { FaHamburger, FaClock } from 'react-icons/fa'
 
 const FeaturedCompanies = () => {
   const [featuredCompanies, setFeaturedCompanies] = useState([])
@@ -41,8 +41,9 @@ const FeaturedCompanies = () => {
                   <img src={person} className={classes.owner} />
                 </div>
                 <div className={classes.moreDetails}>
-                  <span>{company?.beds} beds <FaBed className={classes.icon} /></span>
-                  <span>{company?.sqfeet} square foots <FaSquareFull className={classes.icon} /></span>
+                  
+                  <span>{company?.rating} Location <FaHamburger className={classes.icon} /></span>
+                  <span>{company?.review} <FaClock className={classes.icon} /></span>
                 </div>
                 <div className={classes.desc}>
                   {company?.desc}

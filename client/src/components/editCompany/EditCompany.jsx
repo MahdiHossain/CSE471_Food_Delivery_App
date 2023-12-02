@@ -7,10 +7,10 @@ import { AiOutlineFileImage } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
 import classes from './editCompany.module.css'
 
-const EditProperty = () => {
+const EditCompany = () => {
     const { id } = useParams()
     const { token } = useSelector((state) => state.auth)
-    const [propertyDetails, setPropertyDetails] = useState(null)
+    const [companyDetails, setCompanyDetails] = useState(null)
     const [photo, setPhoto] = useState(null)
     const [initialPhoto, setInitialPhoto] = useState(null)
     const [error, setError] = useState(false)
@@ -18,21 +18,21 @@ const EditProperty = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const fetchPropertyDetails = async () => {
+        const fetchCompanyDetails = async () => {
             try {
-                const data = await request(`/property/find/${id}`, 'GET')
-                setPropertyDetails(data)
+                const data = await request(`/company/find/${id}`, 'GET')
+                setCompanyDetails(data)
                 setPhoto(data.img)
                 setInitialPhoto(data.img)
             } catch (error) {
                 console.error(error)
             }
         }
-        fetchPropertyDetails()
+        fetchCompanyDetails()
     }, [id])
 
     const handleState = (e) => {
-        setPropertyDetails(prev => {
+        setCompanyDetails(prev => {
             return { ...prev, [e.target.name]: e.target.value }
         })
     }
@@ -56,7 +56,7 @@ const EditProperty = () => {
 
 
         try {
-            if (Object.values(propertyDetails).some((v) => v === '')) {
+            if (Object.values(companyDetails).some((v) => v === '')) {
                 setEmptyFields(true)
                 setTimeout(() => {
                     setEmptyFields(false)
@@ -70,8 +70,8 @@ const EditProperty = () => {
                 "Content-Type": 'application/json'
             }
 
-            await request(`/property/${id}`, 'PUT', options, { ...propertyDetails, img: filename })
-            navigate(`/propertyDetail/${id}`)
+            await request(`/company/${id}`, 'PUT', options, { ...companyDetails, img: filename })
+            navigate(`/companyDetail/${id}`)
 
         } catch (error) {
             setError(true)
@@ -86,21 +86,21 @@ const EditProperty = () => {
     return (
         <div className={classes.container}>
             <div className={classes.wrapper}>
-                <h2>Edit Property</h2>
+                <h2>Edit Company</h2>
                 <form onSubmit={handleUpdate}>
-                    <input value={propertyDetails?.title} type="text" placeholder='Title' name="title" onChange={handleState} />
+                    <input value={companyDetails?.title} type="text" placeholder='Title' name="title" onChange={handleState} />
                     <select required name='type' onChange={handleState}>
                         <option disabled>Select Area</option>
-                        <option value='gulshan'>Gulshan</option>
-                        <option value='banani'>Banani</option>
-                        <option value='dhanmondi'>Dhanmondi</option>
+                        <option value='burger'>Burger</option>
+                        <option value='pizza'>Pizza</option>
+                        <option value='gyro'>Gyro</option>
                     </select>
-                    <input value={propertyDetails?.desc} type="text" placeholder='Desc' name="desc" onChange={handleState} />
-                    <input value={propertyDetails?.price} type="number" placeholder='Price' name="price" onChange={handleState} />
-                    <input value={propertyDetails?.sqmeters} type="number" placeholder='Sq. meters' name="sqmeters" onChange={handleState} />
-                    <input value={propertyDetails?.beds} type="number" placeholder='Beds' name="beds" step={1} min={1} onChange={handleState} />
+                    <input value={companyDetails?.desc} type="text" placeholder='Desc' name="desc" onChange={handleState} />
+                    <input value={companyDetails?.price} type="number" placeholder='Price' name="price" onChange={handleState} />
+                    <input value={companyDetails?.sqmeters} type="text" placeholder='Location' name="Location" onChange={handleState} />
+                    <input value={companyDetails?.beds} type="text" placeholder='Schedule' name="Schedule" step={1} min={1} onChange={handleState} />
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', width: '50%' }}>
-                        <label htmlFor='photo'>Property picture <AiOutlineFileImage /></label>
+                        <label htmlFor='photo'>Company picture <AiOutlineFileImage /></label>
                         <input
                             type="file"
                             id='photo'
@@ -126,4 +126,4 @@ const EditProperty = () => {
     )
 }
 
-export default EditProperty
+export default EditCompany
