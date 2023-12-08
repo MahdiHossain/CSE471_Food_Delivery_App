@@ -1,33 +1,47 @@
 import React from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AiOutlineSearch } from 'react-icons/ai'
 import classes from './hero.module.css'
-import {AiOutlineArrowDown} from 'react-icons/ai'
-import manEating from '../../assets/man-having-his-meal.svg'
 
 const Hero = () => {
+  const [type, setType] = useState("burger")
+  const [priceRange, setPriceRange] = useState("0")
+  const navigate = useNavigate()
+
+  // TODO here or somewhere home(fetching properties)
+
+  const handleSearch = () => {
+    // navigating to properties
+    navigate(`/companies?type=${type}`)
+  }
+
   return (
-    <section style={{height: '200vh'}} id="home" className={classes.container}>
+    <div className={classes.container}>
       <div className={classes.wrapper}>
-        <div className={classes.left}>
-          <h2 className={classes.title}>Are you at home craving delicious food?</h2>
-          <p className={classes.firstMsg}>But going out to buy food takes a lot of <span>time?</span></p>
-          <p className={classes.secondMsg}>
-            Why not order <span>pizza</span> or something <br /> <span>delicious </span>
-            from our restaurants
-          </p>
-          <p className={classes.desc}>
-            Our restaurant always puts the client above.
-            They are our single most important thing for our business.
-          </p>
-          <div className={classes.buttons}>
-            <button className={classes.buttonOrder}>Order now!</button>
-            <button className={classes.buttonSee}><a href="#foods">See what's available <AiOutlineArrowDown/> </a></button>
-          </div>
-        </div>
-        <div className={classes.right}>
-          <img src={manEating} alt="" className={classes.manEatingImg}/>
+        <h2>Let me find your dream place right now</h2>
+        <h5>Search the best selection of luxury real estate</h5>
+        <div className={classes.options}>
+          <select onChange={(e) => setType(e.target.value)}>
+            <option disabled>Select Area</option>
+            <option value='burger'>Gulshan</option>
+            <option value='pizza'>Banani</option>
+            <option value='gyro'>Dhanmondi</option>
+          </select>
+
+          {/* <select onChange={(e) => setContinent(e.target.value)}>
+            <option disabled>Select Continent</option>
+            <option value="0">Europe</option>
+            <option value="1">Asia</option>
+            <option value="2">Africa</option>
+            <option value="3">South America</option>
+            <option value="4">North America</option>
+            <option value="5">Oceania</option>
+          </select> */}
+          <AiOutlineSearch className={classes.searchIcon} onClick={handleSearch} />
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

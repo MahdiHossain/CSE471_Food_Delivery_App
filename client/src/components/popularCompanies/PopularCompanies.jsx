@@ -17,7 +17,7 @@ const PopularCompanies= () => {
     const fetchComapnyNumbers = async() => {
       try {
          const data = await request('/company/find/types', 'GET')
-         console.log(data)
+
          setNumCompanies(data)
         //  setBurgerRestaurants(data.burger)
         //  setPizzaRestaurants(data.pizza)
@@ -37,17 +37,17 @@ const PopularCompanies= () => {
           <h2>Best categories of foods for you!</h2>
         </div>
         <div className={classes.restaurants}>
-          <Link to={`/company/find?type=burger`} className={classes.restaurant}>
+          <Link to={`/companies`} className={classes.restaurant}>
             <img src={img1} />
             <div className={classes.quantity}>{numCompanies?.Pizza} restaurants</div>
             <h5>Burger restaurants</h5>
           </Link>
-          <Link to={`/company/find?type=pizza`} className={classes.restaurant}>
+          <Link to={`/companies`} className={classes.restaurant}>
             <img src={img2} />
             <div className={classes.quantity}>{numCompanies?.Pizza} restaurants</div>
             <h5>Pizza restaurants</h5>
           </Link>
-          <Link to={`/company/find?type=gyro`} className={classes.restaurant}>
+          <Link to={`/companies`} className={classes.restaurant}>
             <img src={img3} />
             <div className={classes.quantity}>{numCompanies?.Gyro} restaurants</div>
             <h5>Gyro restaurants</h5>

@@ -14,7 +14,6 @@ const FeaturedCompanies = () => {
     const fetchFeatured = async () => {
       try {
         const data = await request('/company/find/featured', 'GET')
-        console.log(data)
         setFeaturedCompanies(data)
       } catch (error) {
         console.error(error.message)

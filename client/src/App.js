@@ -6,7 +6,6 @@ import PopularCompanies from './components/popularCompanies/PopularCompanies';
 import Signin from './components/signin/Signin';
 import Signup from './components/signup/Signup';
 import Companies from './components/companies/Companies';
-// import { useSelector } from 'react-redux'
 import CompanyDetail from './components/companyDetail/CompanyDetail';
 import { useSelector } from 'react-redux'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
@@ -83,8 +82,8 @@ function App() {
             </>
             : <Navigate to='/signin' />
         } />
-        <Route path='/signin' element={<Signin />} />
-        <Route path='/signup' element={<Signup />} />
+        <Route path='/signin' element={!user ? <Signin /> : <Navigate to='/' />} />
+        <Route path='/signup' element={!user ? <Signup /> : <Navigate to='/' />} />
       </Routes>
 
 

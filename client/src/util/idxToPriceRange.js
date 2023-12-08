@@ -1,9 +1,9 @@
 export const arrPriceRanges = [
-    "0-100000",
-    "100000-200000",
-    "200000-300000",
-    "300000-400000",
-    "400000-500000"
+    "0-10",
+    "11-20",
+    "21-30",
+    "31-40",
+    "41-100"
 ]
 
 export const priceRangeToIndex = (priceRange) => {
