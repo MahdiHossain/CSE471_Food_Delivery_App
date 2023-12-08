@@ -11,8 +11,8 @@ import { logout } from '../../redux/authSlice'
 
 const MyProfile = () => {
     const { user, token } = useSelector((state) => state.auth)
-    const [listedProperties, setListedProperties] = useState([])
-    const [bookmarkedProperties, setBookmarkedProperties] = useState([])
+    const [listedCompanies, setListedCompanies] = useState([])
+    const [bookmarkedCompanies, setBookmarkedCompanies] = useState([])
     const [activeBtn, setActiveBtn] = useState(0)
     const [deleteModal, setDeleteModal] = useState(false)
     const [error, setError] = useState(false)
@@ -21,33 +21,33 @@ const MyProfile = () => {
 
 
     useEffect(() => {
-        const fetchListedProperties = async () => {
+        const fetchListedCompanies = async () => {
             try {
                 const options = {
                     Authorization: `Bearer ${token}`
                 }
-                const data = await request(`/company/find/my-properties`, 'GET', options)
-                setListedProperties(data)
+                const data = await request(`/company/find/my-companies`, 'GET', options)
+                setListedCompanies(data)
             } catch (error) {
                 console.log(error)
             }
         }
-        fetchListedProperties()
+        fetchListedCompanies()
     }, [])
 
     useEffect(() => {
-        const fetchBookmarkedProperties = async () => {
+        const fetchBookmarkedCompanies = async () => {
             try {
                 const options = {
                     Authorization: `Bearer ${token}`
                 }
-                const data = await request(`/company/find/bookmarked-properties`, 'GET', options)
-                setBookmarkedProperties(data)
+                const data = await request(`/company/find/bookmarked-companies`, 'GET', options)
+                setBookmarkedCompanies(data)
             } catch (error) {
                 console.log(error)
             }
         }
-        fetchBookmarkedProperties()
+        fetchBookmarkedCompanies()
     }, [])
 
     const handleDeleteProfile = async () => {
@@ -89,20 +89,20 @@ const MyProfile = () => {
                 </div>
                 <div className={classes.buttons}>
                     <button className={`${classes.button} ${activeBtn === 0 && classes.active}`} onClick={() => setActiveBtn(prev => 0)}>
-                        Listed properties
+                        Listed companies
                     </button>
                     <button className={`${classes.button} ${activeBtn === 2 && classes.active}`} onClick={() => setActiveBtn(prev => 2)}>
-                        Bookmarked properties
+                        Bookmarked companies
                     </button>
 
                 </div>
                 <div className={classes.catalog}>
                     {activeBtn === 0 && (
                         <>
-                            {listedProperties?.length > 0 && <h2 className={classes.title}>Listed Properties</h2>}
-                            <div className={classes.properties}>
-                                {listedProperties?.length > 0 ? listedProperties?.map((listedProperty) => (
-                                    <div key={listedProperty._id} className={classes.property}>
+                            {listedCompanies?.length > 0 && <h2 className={classes.title}>Listed Companies</h2>}
+                            <div className={classes.companies}>
+                                {listedCompanies?.length > 0 ? listedCompanies?.map((listedProperty) => (
+                                    <div key={listedProperty._id} className={classes.company}>
                                         <Link to={`/companyDetail/${listedProperty._id}`} className={classes.imgContainer}>
                                             <img src={`http://localhost:5000/images/${listedProperty?.img}`} alt="" />
                                         </Link>
@@ -120,16 +120,16 @@ const MyProfile = () => {
                                             </div>
                                         </div>
                                     </div>
-                                )) : <h2 className={classes.noListed}>You have no listed properties</h2>}
+                                )) : <h2 className={classes.noListed}>You have no listed companies</h2>}
                             </div>
                         </>
                     )}
                     {activeBtn === 2 && (
                         <>
-                            {bookmarkedProperties?.length > 0 && <h2 className={classes.title}>Bookmarked Properties</h2>}
-                            <div className={classes.properties}>
-                                {bookmarkedProperties?.length > 0 ? bookmarkedProperties?.map((bookmarkedProperty) => (
-                                    <div key={bookmarkedProperty._id} className={classes.property}>
+                            {bookmarkedCompanies?.length > 0 && <h2 className={classes.title}>Bookmarked Companies</h2>}
+                            <div className={classes.companies}>
+                                {bookmarkedCompanies?.length > 0 ? bookmarkedCompanies?.map((bookmarkedProperty) => (
+                                    <div key={bookmarkedProperty._id} className={classes.company}>
                                         <Link to={`/companyDetail/${bookmarkedProperty._id}`} className={classes.imgContainer}>
                                             <img src={`http://localhost:5000/images/${bookmarkedProperty?.img}`} alt="" />
                                         </Link>
@@ -147,7 +147,7 @@ const MyProfile = () => {
                                             </div>
                                         </div>
                                     </div>
-                                )) : <h2 className={classes.noListed}>You have no bookmarked properties</h2>}
+                                )) : <h2 className={classes.noListed}>You have no bookmarked companies</h2>}
                             </div>
                         </>
                     )}
@@ -162,5 +162,5 @@ const MyProfile = () => {
     )
 }
 
-// 0 - Listed Properties
+// 0 - Listed Companies
 export default MyProfile
