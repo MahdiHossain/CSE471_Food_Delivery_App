@@ -5,6 +5,7 @@ const cors = require("cors");
 const authController = require("./controllers/authController");
 const companyController = require("./controllers/companyController");
 const uploadController = require("./controllers/uploadController");
+const productController = require("./controllers/productController");
 const commentController = require("./controllers/commentController");
 const userController = require("./controllers/userController");
 const app = express();
@@ -32,7 +33,7 @@ app.use('/images', express.static('public/images'))
 app.use("/auth", authController)
 app.use("/company", companyController)
 app.use("/upload", uploadController)
+app.use('/product', productController)
 app.use('/user', userController)
 app.use('/comment', commentController)
-
 app.listen(process.env.PORT, () => console.log("Server started successfully!"));

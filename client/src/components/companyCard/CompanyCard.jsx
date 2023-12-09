@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './companyCard.module.css'
-import { FaBed, FaSquareFull } from 'react-icons/fa'
+import { FaHamburger, FaClock } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import person from '../../assets/person.jpg'
 
@@ -18,8 +18,8 @@ const CompanyCard = ({ company }) => {
                     <img src={ownerProfileImg ? `http://localhost:5000/images/${ownerProfileImg}` : person} className={classes.owner} />
                 </div>
                 <div className={classes.moreDetails}>
-                    <span>{company.beds} <FaBed className={classes.icon} /></span>
-                    <span>{company.sqmeters} square meters<FaSquareFull className={classes.icon} /></span>
+                    <span>{company.beds} <FaHamburger className={classes.icon} /></span>
+                    <span>{company.sqmeters} Schedule<FaClock className={classes.icon} /></span>
                 </div>
                 <div className={classes.desc}>
                     {company.desc}

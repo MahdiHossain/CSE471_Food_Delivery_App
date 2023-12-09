@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { request } from '../../util/fetchAPI'
-import img from '../../assets/forkspoon.jpeg'
 import person from '../../assets/person2.jpeg'
 import { Link } from 'react-router-dom'
 import classes from "./featuredCompanies.module.css"
@@ -32,7 +31,7 @@ const FeaturedCompanies = () => {
           {featuredCompanies?.map((company) => (
             <div key={company._id} className={classes.featuredCompany}>
               <Link to={`/companyDetail/${company._id}`} className={classes.imgContainer}>
-                <img src={img} alt="" />
+                <img src={`http://localhost:5000/images/${company?.img}`} alt="" />
               </Link>
               <div className={classes.details}>
                 <div className={classes.priceAndOwner}>

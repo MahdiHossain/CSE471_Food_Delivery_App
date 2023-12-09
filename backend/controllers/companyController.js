@@ -47,42 +47,11 @@ companyController.get('/find/types', async(req, res) => {
         const burgerType = await Company.countDocuments({ type: 'burger' });
         const pizzaType = await Company.countDocuments({ type: 'pizza' });
         const gyroType = await Company.countDocuments({ type: 'gyro' });
-        // const baridharaType = await Company.countDocuments({ type: 'baridhara' });
-        // const mohakhaliType = await Company.countDocuments({ type: 'mohakhali' });
-        // const mirpurType = await Company.countDocuments({ type: 'Mirpur' });
-        // const mohakhaliType = await Company.countDocuments({ type: 'Mohakhali' });
-        // const mohammadpurType = await Company.countDocuments({ type: 'Mohammadpur' });
-        // const kakrailType = await Company.countDocuments({ type: 'Kakrail' });
-        // const nayaPaltanType = await Company.countDocuments({ type: 'Naya_Paltan' });
-        // const elephantRoadType = await Company.countDocuments({ type: 'Elephant_Road' });
-        // const farmgateType = await Company.countDocuments({ type: 'Farmgate' });
-        // const newMarketType = await Company.countDocuments({ type: 'New_Market' });
-        // const shahbagType = await Company.countDocuments({ type: 'Shahbag' });
-        // const motijheelType = await Company.countDocuments({ type: 'Motijheel' });
-        // const pizzaDOHSType = await Company.countDocuments({ type: 'pizza_DOHS' });
-        // const bashundharaRAType = await Company.countDocuments({ type: 'Bashundhara_RA' });
-        // const khilgaonType = await Company.countDocuments({ type: 'Khilgaon' });
-        // const malibaghType = await Company.countDocuments({ type: 'Malibagh' });
          return res.status(200).json({
             Burger: burgerType,
             Pizza: pizzaType,
             Gyro: gyroType,
-            // Baridhara: baridharaType,
-            // mohakhali: mohakhaliType
-            // Mirpur: mirpurType,
-            // Mohakhali: mohakhaliType,
-            // Mohammadpur: mohammadpurType,
-            // Kakrail: kakrailType,
-            // Naya_Paltan: nayaPaltanType,
-            // Elephant_Road: elephantRoadType,
-            // Farmgate: farmgateType,
-            // New_Market: newMarketType,
-            // Shahbag: shahbagType,
-            // Motijheel: motijheelType,
-            // pizza_DOHS: pizzaDOHSType,
-            // Bashundhara_RA: bashundharaRAType,
-            // Khilgaon: khilgaonType,
-            // Malibagh: malibaghType
+
         })
     } catch (error) {
         return res.status(500).json(error) 

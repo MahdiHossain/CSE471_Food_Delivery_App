@@ -81,23 +81,6 @@ const Companies = () => {
             <option value='pizza'>Pizza</option>
             <option value='gyro'>Gyro</option>
           </select>
-          {/* <select value={state?.priceRange} name="priceRange" onChange={handleState}>
-            <option disabled>Select Price Range</option>
-            <option value="0">0-100,000</option>
-            <option value="1">100,000-200,000</option>
-            <option value="2">200,000-300,000</option>
-            <option value="3">300,000-400,000</option>
-            <option value="4">400,000-500,000</option>
-          </select> */}
-          {/* <select value={state?.continent} name="continent" onChange={handleState}>
-            <option disabled>Select Continent</option>
-            <option value="0">Europe</option>
-            <option value="1">Asia</option>
-            <option value="2">Africa</option>
-            <option value="3">South America</option>
-            <option value="4">North America</option>
-            <option value="5">Oceania</option>
-          </select> */}
           <button className={classes.searchBtn}>
             <AiOutlineSearch className={classes.searchIcon} onClick={handleSearch} />
           </button>
@@ -110,13 +93,13 @@ const Companies = () => {
             </div>
             <div className={classes.properties}>
               {filteredCompanies.map((company) => (
-                
-                <CompanyCard key={company._id} company={company}/>
-                
+
+                <CompanyCard key={company._id} company={company} />
+
               ))}
-              
+
             </div>
-            
+
           </> : <h2 className={classes.noProperty}>We have no Restaurants with the specified options.</h2>}
       </div>
     </div>

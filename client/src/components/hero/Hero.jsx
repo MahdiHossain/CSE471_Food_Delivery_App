@@ -19,25 +19,16 @@ const Hero = () => {
   return (
     <div className={classes.container}>
       <div className={classes.wrapper}>
-        <h2>Let me find your dream place right now</h2>
-        <h5>Search the best selection of luxury real estate</h5>
+        <h2>Craving for delicious food?</h2>
+        <h5>Search the best selection of restaurants</h5>
         <div className={classes.options}>
           <select onChange={(e) => setType(e.target.value)}>
             <option disabled>Select Area</option>
-            <option value='burger'>Gulshan</option>
-            <option value='pizza'>Banani</option>
-            <option value='gyro'>Dhanmondi</option>
+            <option value='burger'>Burger</option>
+            <option value='pizza'>Pizza</option>
+            <option value='gyro'>Gyro</option>
           </select>
 
-          {/* <select onChange={(e) => setContinent(e.target.value)}>
-            <option disabled>Select Continent</option>
-            <option value="0">Europe</option>
-            <option value="1">Asia</option>
-            <option value="2">Africa</option>
-            <option value="3">South America</option>
-            <option value="4">North America</option>
-            <option value="5">Oceania</option>
-          </select> */}
           <AiOutlineSearch className={classes.searchIcon} onClick={handleSearch} />
         </div>
       </div>
